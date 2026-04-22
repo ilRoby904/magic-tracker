@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Tracker</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Magic Tracker" />
+  <link rel="apple-touch-icon" href="icon.png" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header>
+      <div class="header-title">🃏 Magic Tracker</div>
+      <div class="header-sub" id="header-sub">Caricamento...</div>
+    </header>
+
+    <!-- Notification banner -->
+    <div id="notif-banner" class="notif-banner hidden"></div>
+
+    <!-- Tabs -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="dashboard">📊 Dashboard</button>
+      <button class="tab" data-tab="collection">📦 Collezione</button>
+      <button class="tab" data-tab="import">📥 Importa</button>
+      <button class="tab" data-tab="notifications">🔔 Avvisi</button>
+      <button class="tab" data-tab="settings">⚙️ Impostazioni</button>
+    </nav>
+
+    <!-- Pages -->
+    <main>
+      <!-- DASHBOARD -->
+      <section id="tab-dashboard" class="page active">
+        <div class="stats-grid" id="stats-grid"></div>
+        <div class="section-header">
+          <h2>🏆 Top 5 carte</h2>
+          <button id="refresh-btn" class="btn-primary">🔄 Aggiorna</button>
+        </div>
+        <div id="top-cards"></div>
+      </section>
+
+      <!-- COLLECTION -->
+      <section id="tab-collection" class="page">
+        <h2>📦 Tutta la collezione</h2>
+        <div id="collection-list"></div>
+      </section>
+
+      <!-- IMPORT -->
+      <section id="tab-import" class="page">
+        <h2>📥 Importa CSV</h2>
+        <div class="info-box">
+          <b>Formato:</b><br/>
+          <code>nome_carta, quantità, edizione (opzionale)</code><br/><br/>
+          <code>Lightning Bolt, 4, m11</code><br/>
+          <code>Black Lotus, 1</code><br/>
+          <code>Counterspell, 2, 4ed</code>
+        </div>
+        <textarea id="csv-input" placeholder="Lightning Bolt, 4&#10;Counterspell, 2, 4ed&#10;Black Lotus, 1"></textarea>
+        <button id="import-btn" class="btn-primary full">📥 Importa e recupera prezzi</button>
+        <div id="import-progress" class="hidden">
+          <div class="progress-label" id="progress-label">0/0</div>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+        <div id="import-msg"></div>
+      </section>
+
+      <!-- NOTIFICATIONS -->
+      <section id="tab-notifications" class="page">
+        <div class="section-header">
+          <h2>🔔 Avvisi di prezzo</h2>
+          <button id="mark-read-btn" class="btn-secondary">Segna letti</button>
+        </div>
+        <div id="notifications-list"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="tab-settings" class="page">
+        <h2>⚙️ Impostazioni</h2>
+        <div class="card">
+          <label>Soglia avviso variazione prezzo</label>
+          <div class="slider-row">
+            <input type="range" id="threshold-slider" min="1" max="50" value="10" />
+            <span id="threshold-val" class="threshold-label">10%</span>
+          </div>
+          <p class="hint">Avviso quando il prezzo cambia di almeno <span id="threshold-hint">10</span>%</p>
+        </div>
+        <div class="card">
+          <label>Info collezione</label>
+          <p class="hint" id="info-text">Caricamento...</p>
+          <p class="hint">Prezzi da <b>Scryfall API</b> (USD)</p>
+        </div>
+        <button id="clear-btn" class="btn-danger">🗑️ Cancella tutti i dati</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
