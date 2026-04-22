@@ -120,7 +120,7 @@ function parseSimpleCSV(txt) {
     .filter(l => l.trim() && !l.startsWith("#"))
     .map(l => {
       const parts = splitCSVLine(l);
-      return { name: parts[0]?.trim(), qty: parseInt(parts[1]) || 1, set: parts[2]?.trim() || "" };
+      return { qty: parseInt(parts[0]) || 1, name: parts[1]?.trim(), set: parts[2]?.trim() || "" };
     })
     .filter(c => c.name);
 }
