@@ -67,6 +67,7 @@
           <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         </div>
         <div id="import-msg"></div>
+        <div id="error-list"></div>
       </section>
 
       <!-- NOTIFICATIONS -->
@@ -81,6 +82,14 @@
       <!-- SETTINGS -->
       <section id="tab-settings" class="page">
         <h2>⚙️ Impostazioni</h2>
+        <div class="card">
+          <label>Valuta di visualizzazione</label>
+          <select id="currency-select" style="background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:6px;padding:6px 10px;font-size:13px;width:100%">
+            <option value="USD">🇺🇸 USD ($)</option>
+            <option value="EUR">🇪🇺 EUR (€)</option>
+          </select>
+          <p class="hint" style="margin-top:6px">Il tasso EUR viene aggiornato ad ogni avvio</p>
+        </div>
         <div class="card">
           <label>Soglia avviso variazione prezzo</label>
           <div class="slider-row">
