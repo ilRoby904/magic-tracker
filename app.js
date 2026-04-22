@@ -1,3 +1,5 @@
+const APP_VERSION = "1.2.0";
+
 // ─── Storage keys ───────────────────────────────────────────────
 const K = {
   cards:   "mtg_cards",
@@ -312,7 +314,7 @@ function renderSettings() {
   document.getElementById("currency-select").value    = state.currency;
   const total = Object.values(state.history).reduce((s,h) => s+h.length, 0);
   document.getElementById("info-text").textContent =
-    `Carte: ${state.cards.length} · Rilevazioni: ${total} · Tasso EUR: ${state.eurRate.toFixed(4)}`;
+    `Carte: ${state.cards.length} · Rilevazioni: ${total} · Tasso EUR: ${state.eurRate.toFixed(4)} · v${APP_VERSION}`;
 }
 
 function renderErrors() {
